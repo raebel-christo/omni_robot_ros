@@ -1,4 +1,4 @@
-import board
+#import board
 import busio
 import adafruit_pca9685
 from time import sleep
@@ -21,7 +21,7 @@ LEFT_MAX_PULSE = 2060
 RIGHT_MIN_PULSE = 1060
 RIGHT_MAX_PULSE = 2020
 
-i2c = busio.I2C(board.SCL, board.SDA)
+i2c = busio.I2C((4,3), (4,2))
 pca = adafruit_pca9685.PCA9685(i2c)
 pca.frequency = 50
 
