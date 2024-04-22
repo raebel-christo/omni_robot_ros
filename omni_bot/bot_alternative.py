@@ -97,7 +97,7 @@ class BotNode(Node):
         if x_vel != 0 or y_vel != 0:
             self.robot.move_angle(theta, vel, w)
         else:
-            self.robot_halt()
+            self.robot.halt()
 
 
 def main(args=None):
