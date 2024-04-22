@@ -104,7 +104,7 @@ def main(args=None):
     alpha = [30, 150, 270]
     i2c_address = 0x40
     i2c_port = 1
-    pca = RPiPCA9685(i2c_address, i2c_port)
+    pca = RPiPCA9685.PCA9685(i2c_address, i2c_port)
     pca.set_frequency(50)
     # Loop between different movement directions
     robot = Robot(pca, alpha[0], alpha[1], alpha[2])
