@@ -1,7 +1,7 @@
 #import local package for PWM
 import sys
 sys.path.append('/home/ubuntu/lidar_ws/src/omni_bot/RPi_PCA9685')
-from RPiPCA9685 import RPiPCA9685
+from .RPiPCA9685 import RPiPCA9685
 
 #import board
 from time import sleep
@@ -78,16 +78,22 @@ class Robot:
 class BotNode(Node):
     def __init__(self, bot):
         super().__init__('bot_node')
-        self.subscriber = self.create_subscriber(Twist, '/cmd_vel', self.callback, 10)
+        self.subscriber = self.create_subscription(Twist, '/cmd_vel', self.callback, 10)
         self.robot = bot
 
     def callback(self, twist):
         x_vel = twist.linear.x
-        v_vel = twist.linear.y
+        y_vel = twist.linear.y
         vel = math.sqrt(x_vel * x_vel + y_vel * y_vel)  # Velocity Magnitude
         vel = clamp(vel, 0, 1)
         w = clamp(twist.angular.z, -1, 1)
-        theta = math.tan(y_vel / x_vel)
+        if y_vel == 0:
+            if x_vel>0:
+                theta = 180
+            else:
+                theta = 0
+        else:
+            theta = math.tan(x_vel / y_vel)
         if x_vel != 0 or y_vel != 0:
             self.robot.move_angle(theta, vel, w)
         else:
