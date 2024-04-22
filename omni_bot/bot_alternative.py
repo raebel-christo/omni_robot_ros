@@ -1,6 +1,6 @@
 #import local package for PWM
 import sys
-sys.path.append('/home/raebel/fyp_ws/src/omni_bot/RPi_PCA9685')
+sys.path.append('/home/ubuntu/fyp_ws/src/omni_bot/RPi_PCA9685')
 from RPiPCA9685 import RPiPCA9685
 
 #import board
