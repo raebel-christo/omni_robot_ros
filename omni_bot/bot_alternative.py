@@ -107,3 +107,6 @@ def main(args=None):
     rclpy.spin(bot_node)
     bot_node.destroy_node()
     rclpy.shutdown()
+
+if __name__=='__main__':
+    main()

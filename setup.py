@@ -20,7 +20,8 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'bot = omni_bot.bot:main'
+            'bot = omni_bot.bot:main',
+            'bot_2 = omni_bot.bot_alternative:main'
         ],
     },
 )
