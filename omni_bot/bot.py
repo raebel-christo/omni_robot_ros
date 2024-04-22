@@ -137,20 +137,5 @@ def main(args=None):
     bot_node.destroy_node()
     rclpy.shutdown()
 
-    # while True:
-    #     key = input("Key: ")
-    #     if key == 'a':
-    #         robot.move_angle(180, MAX_SPEED)
-    #     elif key == 's':
-    #         robot.move_angle(270, MAX_SPEED)
-    #     elif key == 'd':
-    #         robot.move_angle(0, MAX_SPEED)
-    #     elif key == 'w':
-    #         robot.move_angle(90, MAX_SPEED)
-    #     elif key == 'q':
-    #         robot.set_rotation_offset(-0.1)
-    #
-    #     elif key == 'e':
-    #         robot.set_rotation_offset(0.1)
-    #     else:
-    #         robot.halt()
+if __name__ == '__main__':
+    main()
