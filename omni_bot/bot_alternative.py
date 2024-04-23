@@ -47,7 +47,7 @@ def angle(a, p):
 
 # Determine the velocity of the motor
 def get_speed(theta):
-    vel = MAX_SPEED * math.cos(math.radians(theta))
+    vel = MAX_SPEED * math.sin(math.radians(theta))
     return vel
 
 
