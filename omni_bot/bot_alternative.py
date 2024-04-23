@@ -91,7 +91,7 @@ class BotNode(Node):
         phi = math.degrees(math.atan2(y_vel,x_vel))
         if x_vel != 0 or y_vel != 0 or w != 0:
             self.get_logger().info(f'Bearing: {phi} ({x_vel},{y_vel}), Rotation: {w}')
-            self.robot.move_angle(phi, vel, w)
+            self.robot.move_angle(phi, vel, -w)
         else:
             self.get_logger().info('Robot Halted')
             self.robot.halt()
