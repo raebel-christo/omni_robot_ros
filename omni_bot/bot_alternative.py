@@ -59,15 +59,15 @@ class Robot:
         self.alpha_rear = alpha_re
 
     def move_angle(self, Phi, speed, rotation):
-        theta1 = angle(self.alpha_right, Phi)
-        theta2 = angle(self.alpha_left, Phi)
-        theta3 = angle(self.alpha_rear, Phi)
+        theta1 = angle(self.alpha_right, Phi) + 180
+        theta2 = angle(self.alpha_left, Phi) + 180
+        theta3 = angle(self.alpha_rear, Phi) + 180
         vel1 = clamp((get_speed(theta1) + rotation)*speed, -1, 1)
         vel2 = clamp((get_speed(theta2) + rotation)*speed, -1, 1)
         vel3 = clamp((get_speed(theta3) + rotation)*speed, -1, 1)
-        self.controller.set_pwm(RIGHT, mapping(vel1, -1, 1, RIGHT_MAX_PULSE, RIGHT_MIN_PULSE))
-        self.controller.set_pwm(LEFT, mapping(vel2, -1, 1, LEFT_MAX_PULSE, LEFT_MIN_PULSE))
-        self.controller.set_pwm(REAR, mapping(vel3, -1, 1, REAR_MAX_PULSE, REAR_MIN_PULSE))
+        self.controller.set_pwm(RIGHT, mapping(vel1, -1, 1, RIGHT_MIN_PULSE, RIGHT_MAX_PULSE))
+        self.controller.set_pwm(LEFT, mapping(vel2, -1, 1, LEFT_MIN_PULSE, LEFT_MAX_PULSE))
+        self.controller.set_pwm(REAR, mapping(vel3, -1, 1, REAR_MIN_PULSE, REAR_MAX_PULSE))
 
     def halt(self):
         self.controller.set_pwm(RIGHT, 0)
