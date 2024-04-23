@@ -88,7 +88,7 @@ class BotNode(Node):
         vel = math.sqrt(x_vel * x_vel + y_vel * y_vel)  # Velocity Magnitude
         vel = clamp(vel, 0, 1)
         w = clamp(twist.angular.z, -1, 1)
-        theta = math.degree(math.atan2(y_vel/x_vel))
+        theta = math.degrees(math.atan2(y_vel/x_vel))
         if x_vel != 0 or y_vel != 0 or w != 0:
             self.get_logger().info(f'Bearing: {theta} ({x_vel},{y_vel}), Rotation: {w}')
             self.robot.move_angle(theta, vel, w)
