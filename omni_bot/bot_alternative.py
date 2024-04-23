@@ -41,7 +41,7 @@ def clamp(n, nmin, nmax):
 
 # Generate the angle triangle
 def angle(a, p):
-    theta = a - p
+    theta = p - a
     return theta
 
 
