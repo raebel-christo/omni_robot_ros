@@ -17,12 +17,12 @@ MAX_SPEED = 1
 REAR = 2
 LEFT = 1
 RIGHT = 0
-REAR_MIN_PULSE = 1085
-REAR_MAX_PULSE = 2100
-LEFT_MIN_PULSE = 1030
-LEFT_MAX_PULSE = 2060
+REAR_MIN_PULSE = 1060
+REAR_MAX_PULSE = 2075
+LEFT_MIN_PULSE = 1060
+LEFT_MAX_PULSE = 2075
 RIGHT_MIN_PULSE = 1060
-RIGHT_MAX_PULSE = 2020
+RIGHT_MAX_PULSE = 2075
 
 
 # mapping function
@@ -88,9 +88,9 @@ class BotNode(Node):
         vel = math.sqrt(x_vel * x_vel + y_vel * y_vel)  # Velocity Magnitude
         vel = clamp(vel, 0, 1)
         w = clamp(twist.angular.z, -1, 1)
-        theta = math.degrees(math.atan2(y_vel,x_vel))
+        phi = math.degrees(math.atan2(y_vel,x_vel))
         if x_vel != 0 or y_vel != 0 or w != 0:
-            self.get_logger().info(f'Bearing: {theta} ({x_vel},{y_vel}), Rotation: {w}')
+            self.get_logger().info(f'Bearing: {phi} ({x_vel},{y_vel}), Rotation: {w}')
             self.robot.move_angle(theta, vel, w)
         else:
             self.get_logger().info('Robot Halted')
@@ -98,7 +98,7 @@ class BotNode(Node):
 
 
 def main(args=None):
-    alpha = [120, -120, 0]
+    alpha = [-60, 60, 180]
     i2c_address = 0x40
     i2c_port = 1
     pca = RPiPCA9685.PCA9685(i2c_address, i2c_port)
