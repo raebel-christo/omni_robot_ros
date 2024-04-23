@@ -98,7 +98,7 @@ class BotNode(Node):
 
 
 def main(args=None):
-    alpha = [30, 150, 270]
+    alpha = [-60, 60, 180]
     i2c_address = 0x40
     i2c_port = 1
     pca = RPiPCA9685.PCA9685(i2c_address, i2c_port)
