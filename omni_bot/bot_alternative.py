@@ -95,6 +95,7 @@ class BotNode(Node):
         else:
             theta = math.tan(x_vel / y_vel)
         if x_vel != 0 or y_vel != 0:
+            self.get_logger().info(f'Bearing: {theta} ({x_vel},{y_vel}), Rotation: {w}')
             self.robot.move_angle(theta, vel, w)
         else:
             self.robot.halt()
