@@ -41,13 +41,13 @@ def clamp(n, nmin, nmax):
 
 # Generate the angle triangle
 def angle(a, p):
-    theta = p - a
+    theta = a - p
     return theta
 
 
 # Determine the velocity of the motor
 def get_speed(theta):
-    vel = MAX_SPEED * math.sin(math.radians(theta))
+    vel = MAX_SPEED * math.cos(math.radians(theta))
     return vel
 
 
