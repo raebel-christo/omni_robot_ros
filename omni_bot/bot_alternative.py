@@ -59,9 +59,9 @@ class Robot:
         self.alpha_rear = alpha_re
 
     def move_angle(self, Phi, speed, rotation):
-        theta1 = angle(self.alpha_right, Phi) + 180
-        theta2 = angle(self.alpha_left, Phi) + 180
-        theta3 = angle(self.alpha_rear, Phi) + 180
+        theta1 = angle(self.alpha_right, Phi)
+        theta2 = angle(self.alpha_left, Phi)
+        theta3 = angle(self.alpha_rear, Phi)
         vel1 = clamp((get_speed(theta1) + rotation)*speed, -1, 1)
         vel2 = clamp((get_speed(theta2) + rotation)*speed, -1, 1)
         vel3 = clamp((get_speed(theta3) + rotation)*speed, -1, 1)
