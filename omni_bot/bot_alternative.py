@@ -1,7 +1,5 @@
 #import local package for PWM
-import sys
-sys.path.append('/home/ubuntu/lidar_ws/src/omni_bot/RPi_PCA9685')
-from .RPiPCA9685 import RPiPCA9685
+from RPiPCA9685 import RPiPCA9685
 
 #import board
 from time import sleep
