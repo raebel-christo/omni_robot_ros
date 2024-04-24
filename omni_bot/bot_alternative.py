@@ -1,5 +1,5 @@
 #import local package for PWM
-from RPiPCA9685 import RPiPCA9685
+from .RPiPCA9685 import RPiPCA9685
 
 #import board
 from time import sleep
