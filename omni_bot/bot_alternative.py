@@ -86,10 +86,14 @@ class BotNode(Node):
         vel = math.sqrt(x_vel * x_vel + y_vel * y_vel)  # Velocity Magnitude
         vel = clamp(vel, 0, 1)
         w = clamp(twist.angular.z, -1, 1)
-        phi = math.degrees(math.atan2(y_vel,x_vel))
+        if x_vel == 0 and y_vel == 0:
+            phi = 0
+            self.get_logger().info(f'Bearing: {phi} ({x_vel},{y_vel}), Rotation: {w}, Speed {vel}')
+            self.robot.move_angle(phi, vel, w)
         if x_vel != 0 or y_vel != 0 or w != 0:
-            self.get_logger().info(f'Bearing: {phi} ({x_vel},{y_vel}), Rotation: {w}')
-            self.robot.move_angle(phi, vel, -w)
+            phi = math.degrees(math.atan2(y_vel,x_vel))
+            self.get_logger().info(f'Bearing: {phi} ({x_vel},{y_vel}), Rotation: {w}, Speed: {vel}')
+            self.robot.move_angle(phi, vel, w)
         else:
             self.get_logger().info('Robot Halted')
             self.robot.halt()
