@@ -39,6 +39,9 @@ def generate_launch_description():
                       executable='bot_2',
                       name='servo_driver',
                       namespace='bot2',
+                      remappings=[
+                          ('/cmd_vel','/bot2/cmd_vel'),
+                      ],
                       )
 
     return LaunchDescription([
