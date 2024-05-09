@@ -28,22 +28,22 @@ def generate_launch_description():
                                 parameters=[parameter_file],
                                 namespace='/',
                                 remappings=[
-                                    ('/scan','/bot2/scan')
+                                    ('/scan','/bot1/scan')
                                 ],
                                 )
     tf2_node = Node(package='tf2_ros',
-                    namespace='bot2',
+                    namespace='bot1',
                     executable='static_transform_publisher',
                     name='static_tf_pub_laser',
-                    arguments=['0', '0', '0.02','0', '0', '0', '1','bot2/base_link','bot2/laser_frame'],
+                    arguments=['0', '0', '0.02','0', '0', '0', '1','bot1/base_link','bot1/laser_frame'],
                     )
     
     servo_node = Node(package='omni_bot',
                       executable='bot_2',
                       name='servo_driver',
-                      namespace='bot2',
+                      namespace='bot1',
                       remappings=[
-                          ('/cmd_vel','/bot2/cmd_vel'),
+                          ('/cmd_vel','/bot1/cmd_vel'),
                       ],
                       )
 
